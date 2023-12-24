@@ -94,4 +94,17 @@ Corresponds the animation with the translated Morse Code.
   ### Final Project
   After successful execution of all above processes, the final project is ready.
 
-  ![Project Image](https://github.com/iParth08/Web-Development-Skills/blob/master/PROJECTS/Morse%20Code%20Translator/projectGif.gif)
+  ### Features that can be added in Upcoming Versions
+   - Sound Output
+   - Speed Control
+   - Error Handling
+   - History and Favorites
+   - Mobile Responsiveness
+   - Dark/Light Mode Toggle
+   - Shareable Links
+   - Internationalization (i18n)
+   - Copy to Clipboard
+   - Real-time Collaboration
+  
+  ### Signature
+  Shwet Prakash
