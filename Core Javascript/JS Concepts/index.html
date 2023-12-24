@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JS in a Night</title>
+    <style>
+        input{
+            height: 60px;
+            width : 200px;
+
+        }
+        #one{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="paro" hidden><!--Comment just beside parent-->
+        This is Parent Container.
+        <div class="siblings child1" id="fchild" hidden> First Child</div>
+        <div class="siblings child2" > Second Child</div>
+        <div class="siblings child3" >Third Child</div>
+    </div>
+
+  
+    <div id="elm" data-one="RaOne" data-stark="Iron-Man">
+       
+        <div id="one">This is a div inside Parent</div>
+        
+    </div>
+   
+   
+    
+    <script src="engine.js"></script>
+</body>
+</html>
