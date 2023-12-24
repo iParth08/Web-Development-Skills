@@ -93,5 +93,7 @@ Corresponds the animation with the translated Morse Code.
   
   ### Final Project
   After successful execution of all above processes, the final project is ready.
+![projectGif](https://github.com/iParth08/Web-Development-Skills/assets/112176494/1aa39bee-283b-4c6b-b287-71f5d38670d1)
 
-  ![Project Image](projectGif.gif)
+
+  
