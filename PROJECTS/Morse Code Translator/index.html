@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head">
+            <h1>MORSE CODE TRANSLATOR</h1>
+            <i>Tell Your Secrets, Secretely</i>
+        </div>
+
+        <div class="content-container flex-center flex-vertical">
+            <div id="animation-area" class="flex-center morse">
+                <b>.-.. --- ...- . ....... -.-- --- ..- ....... - .- -. .. ... .... .-</b>
+            </div>
+    
+            <div class="IOBinder flex-center wrap">
+                <div class="flex-center flex-vertical">
+                    <label for="morse">Morse Code Here :</label>
+                    <input type="text" class="morse" id="morse" placeholder="Your MORSE here"></input>
+                </div>
+                
+                <div class="flex-center flex-vertical">
+                    <label for="message">Your Message Here :</label>
+                    <input type="text" class="message" id="message" placeholder="Give your message here">
+                    </input>
+                </div>
+                
+                
+            </div>
+    
+            <div class="ButtonHolde flex-center">
+                <button id="toEnglish" class="red">Translate to English</button>
+                <button id="toMorse" class="green">Translate to Morse</button>
+            </div>
+        </div>
+        
+        
+        <div class="foothold flex-center">
+            <p>Created with Enthuasiam 😁 by Stark Jr</p>
+        </div>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
