@@ -42,6 +42,9 @@
     - [Multiple Handler to one Promise](#multiple-handler-to-one-promise)
   - [Promise API](#promise-api)
   - [Make any Function asynchronous : (Promise)](#make-any-function-asynchronous--promise)
+- [Error Handling](#error-handling)
+  - [try-catch \& finally](#try-catch--finally)
+  - [Custom Error and Error Object](#custom-error-and-error-object)
 
 ## Keypoints
 - **Search mdn for docs**
@@ -789,3 +792,55 @@ Promise constructor returns a (readonly) Promise Object.
     console.log(value);
   });  
   ```
+## Error Handling
+- Error handling means catching any errors that may occur, so that flow of execution does not break down.
+- Catched error helps in performing some operation (solution) on it.
+
+### try-catch & finally
+ - *try* block executes **synchronous** codes which may produce error
+ - *catch* block handles the error if occured.
+ - *finally* block executes in all cases
+
+ ```JS
+   try{
+    // some code to fetch or load anything
+   }
+   catch(error){
+      // handle the error
+   }
+   finally{
+      // Must execute, error occur or not ? what if catch generates error
+
+         //Clean up Operations here
+            //1. Close the file
+            //2. Exit the loop
+            //3. Write to the log file
+            //4. Print some message
+   } 
+ ```
+> try-catch can't handle asynchronous code - that is schedule for later.
+
+### Custom Error and Error Object
+- An error object has three properties
+  - error.name : type of error
+  - error.message : "message of error"
+  - error.stack : every detail about error (type, message, where)
+
+
+- **throw** keyword is used to throw a **new Error**
+- [Different Types of Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors)
+   ```Js
+   try{
+
+      console.log(JavaScript); //here javaScript is not defined, thus reference error
+
+      throw new ReferenceError("Definition Missing");
+   }
+   catch(err){
+      console.log(err.name);
+      console.log(err.message);
+      console.log(err.stack);
+   }
+
+   ```
+
