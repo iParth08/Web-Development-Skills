@@ -27,12 +27,21 @@
   - [Get and Set Innercontent](#get-and-set-innercontent)
   - [Attributes and Methods](#attributes-and-methods)
   - [Modification of ClassList](#modification-of-classlist)
-- [Some functions in JS](#some-functions-in-js)
-  - [setInterval() or setTimeout()](#setinterval-or-settimeout)
 - [Browser Events](#browser-events)
   - [Various Events](#various-events)
   - [Handling Events](#handling-events)
   - [Event Object](#event-object)
+- [Asynchronous Programming in JS](#asynchronous-programming-in-js)
+  - [setInterval() or setTimeout()](#setinterval-or-settimeout)
+  - [Callbacks and Errors](#callbacks-and-errors)
+  - [Error Handling {using callbacks}](#error-handling-using-callbacks)
+  - [Pyramid of Doom or Callback Hell](#pyramid-of-doom-or-callback-hell)
+  - [Promises](#promises)
+    - [How to Create Promise](#how-to-create-promise)
+    - [Promise Chaining : A solution for Callback hell](#promise-chaining--a-solution-for-callback-hell)
+    - [Multiple Handler to one Promise](#multiple-handler-to-one-promise)
+  - [Promise API](#promise-api)
+  - [Make any Function asynchronous : (Promise)](#make-any-function-asynchronous--promise)
 
 ## Keypoints
 - **Search mdn for docs**
@@ -466,26 +475,6 @@ bool = element.classList.contains("red");
 
 ```
 
-## Some functions in JS
-
-### setInterval() or setTimeout()
-- *setInterval(func, delay, f_paras);* => loops the func again and again
-- *setTimeout(func, delay, f_paras);* => execute the func once the time is over
-  
-  ```JS
-  const timeoutID = setTimeout(()=>{
-      console.log("This will execute with a delay of 1s");
-  }, 1000);
-
-  const intervalID = setInterval(function(){
-      console.log("This will log every 2s unless stopped");
-  }, 2000);
-
-  //How to stop these asynchronous execution
-  clearTimeout(timeoutID);
-  clearInterval(intervalID);
-  ```
-
 ## Browser Events
 
 - An event is a signal that something has happend.
@@ -548,7 +537,255 @@ bool = element.classList.contains("red");
 | event.clientY       | y-coordinate of cursor    |
 
 
+## Asynchronous Programming in JS
 
+### setInterval() or setTimeout()
+- *setInterval(func, delay, f_paras);* => loops the func again and again
+- *setTimeout(func, delay, f_paras);* => execute the func once the time is over
+  
+  ```JS
+  const timeoutID = setTimeout(()=>{
+      console.log("This will execute with a delay of 1s");
+  }, 1000);
 
+  const intervalID = setInterval(function(){
+      console.log("This will log every 2s unless stopped");
+  }, 2000);
 
+  //How to stop these asynchronous execution
+  clearTimeout(timeoutID);
+  clearInterval(intervalID);
+  ```
 
+### Callbacks and Errors
+*A function parameter given to a function.*
+
+**Callbacks** : A callback function is a function passed into another function as an argument to get invoked inside.
+
+   ```Js
+   // the 'callback' parameter is a function that to be invoked inside.
+   function loadImage(src, callback){
+      let image = document.createElement('img');
+      image.src = src; 
+      document.body.append(image);
+      image.onload = () => {
+         callback(src);
+      }
+   }
+
+   // definition of callback function
+   function success(url){
+      console.log("Image load success : ", url);
+   }
+
+   //calling
+   loadImage("https://pluralsight2.imgix.net/paths/images/nodejs-45adbe594d.png", success);
+
+   //THE FLOW
+   // loadImage invoked --> onload triggered---> callback(src)---success(url) invoked ---> done 
+
+   ```
+
+### Error Handling {using callbacks}
+
+   ```Js
+   //Error hnadling in the previous code
+
+      function loadImage(src, callback){
+         let image = document.createElement('img');
+         image.src = src; 
+         document.body.append(image);
+         //errors
+         image.onerror = () => {
+            callback(new Error("The url has some problem. Check network issues too."));
+         }
+         //no errors
+         image.onload = () => {
+            callback(null, src);
+         }
+      }
+
+     
+      function success(error, url){
+         //handling the error
+         if(error){
+            console.error(error);
+            return;
+         }
+         console.log("Image load success : ", url);
+      }
+
+      //calling a faulty url
+      loadImage("https://pluralsight2.imgix.net-fault/paths/images/nodejs-45adbe594d.png", success);
+
+   ```
+### Pyramid of Doom or Callback Hell
+*Suppose we a list of scripts to load after one another's successful loading*
+
+- Having callbacks nested inside callbacks creates *pyramid of doom*
+- In Callbacks, total control of a function is passed -- dangerous as hell.
+
+   ```JS
+   //Growing Right!
+
+   loadScript(script1, ...){
+      if(error) return;
+      //iff success
+         loadScript(script2, ...){
+            if(error) return;
+            //iff success
+               loadScript(script3, ....){
+                  //.......to hell
+               }
+         }
+   }
+   ```
+
+### Promises
+- *A promise is a 'promise of code execution'*
+- *Promises follow parallel execution*
+
+Promise constructor returns a (readonly) Promise Object.
+- It has two *state*
+  - pending : The promise is in progress
+  - fulfilled : either 'resolve' or 'reject'
+  
+- It can have these *result*
+  - undefined : initial value
+  - resolved value
+  - rejected error
+  
+#### How to Create Promise
+- **resolve** and **reject** are the only parameters, and *in-order*
+  - resolve :: any value or result of successful execution
+  - reject :: any error or reason of failure
+
+- **Consumer Code:** The consuming code can recieve the *result* of a promise through *then (resolveF , errorF)* and *catch (errorF)*
+  
+   ```Js
+      // resolve and reject are the only parameter {predefined}
+      //order is important
+
+      let cola = new Promise((resolve, reject)=>{
+         setTimeout(()=>{
+            //successful execution
+            resolve('done');
+         }, 5000)
+      });
+
+      let pizza = new Promise((resolve, reject)=>{
+         
+         setTimeout(()=>{
+            reject(new Error("No more Pizza left"));
+         }, 5000);
+      });
+
+      cola.then((value)=>{
+         console.log(value);
+      });
+
+      pizza.catch((error)=>{
+         console.log("Sorry, ", error);
+      });
+
+   ```
+#### Promise Chaining : A solution for Callback hell 
+- initial promise resolves and is handled by .then()
+- .then() returns a new promise whose value is passed to next call
+  
+- No Right alignment, every call is clear and conscise
+- Dependent on previous value
+
+   ```JS
+   let init = new Promise((resolve, reject)=>{
+      resolve("Initial Done");
+   })
+
+   init.then((value)=>{
+      return new Promise((resolve, reject)=>{
+         resolve("Second Promise");
+      })
+   }).then((value)=>{
+      return 3; //immediately resolved promise
+   }).then((value)=>{
+      console.log("Finale");
+   })
+   ```
+#### Multiple Handler to one Promise
+- Inpendent execution of each handler in parallel *?*
+
+   ```JS
+         //multiple handler to one promise :: independent execution
+      pr1.then((val)=>{
+         console.log("Success. Reporting handler 1");
+      });
+
+      pr1.then((val)=>{
+         console.log("Success. Reporting handler 1");
+      });
+
+      pr1.then((val)=>{
+         console.log("Success. Reporting handler 1");
+      });
+   ```
+### Promise API
+- Used to handle multiple promises all together
+  
+  ```JS
+
+      // an array of promises resolved, don't catch error
+      let promise_all = Promise.all([px1, px2, px3]);
+      promise_all.then((value) => {
+         console.log("Promise.all : ", value);
+      });
+
+      // an object of promises {status , value}
+      let promise_allSettled = Promise.allSettled([px1, px2, px3]);
+
+      // gives result (resolve or reject) of the first promise to settle, throws error 
+      let promise_race = Promise.race([px1, px2, px3]);
+
+      // gives the value of the first promise to fulfill, if all promises are rejected, it gives a aggregate error
+      let promise_any = Promise.any([px1, px2, px3]);
+
+      //create a resolved promise with value
+      let resPro = Promise.resolve(65);
+
+      //create a rejected promise with error
+      let rejPro = Promise.reject(new Error("Custom Error"));
+
+  ```
+
+### Make any Function asynchronous : (Promise)
+ 
+ - *A function can be made async by using **async** keyword*
+ - An async function always returns **a promise**.
+ - Automatically wraps non-promises in the promise.
+
+ - **await** works inside async function.
+ - await holds the execution until a promise is fulfilled.
+  
+  ```JS
+   async function weather() {
+
+    let delhiWeather = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("27 Deg");
+      }, 1000);
+    });
+  
+    let bangaloreWeather = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("21 Deg");
+      }, 4000);
+    });
+  
+    let delhiTemp = await delhiWeather;
+    let bangaloreTemp = await bangaloreWeather;
+    return [delhiTemp, bangaloreTemp];
+  }
+
+  weather().then((value)=>{
+    console.log(value);
+  });  
+  ```
