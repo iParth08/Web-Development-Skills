@@ -45,6 +45,10 @@
 - [Error Handling](#error-handling)
   - [try-catch \& finally](#try-catch--finally)
   - [Custom Error and Error Object](#custom-error-and-error-object)
+- [Fetch API](#fetch-api)
+- [Storage in JS](#storage-in-js)
+  - [Cookies](#cookies)
+  - [localStorage](#localstorage)
 
 ## Keypoints
 - **Search mdn for docs**
@@ -843,4 +847,27 @@ Promise constructor returns a (readonly) Promise Object.
    }
 
    ```
+## Fetch API
+> PENDING 66, 67
+
+## Storage in JS
+
+### Cookies
+*Cookies are small string of data directly stored in Browser* 
+> PENDING FOR MORE
+ ```Js
+   document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+
+ ```
+
+### localStorage
+*localStorage is a web storage object that keeps key-value pair in local browser*
+- data not send to server with each request
+- it is persistent that is not lost unless until cleared
+- saved in browser at the path of the site itself
+  
+  ```JS
+  //localStorage methods
+  
+  ```
 
