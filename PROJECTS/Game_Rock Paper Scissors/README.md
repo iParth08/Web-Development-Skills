@@ -50,6 +50,9 @@ const mapVictor = {
 ### Final Project
 After successfully following the steps and setting up the project, the Rock Paper Scissors game is ready for users to enjoy.
 
+![ezgif com-video-to-gif-converter](https://github.com/iParth08/Web-Development-Skills/assets/112176494/2642297a-ea45-4180-82aa-7f8bff15d2cd)
+
+
 ## Suggested Features for Next Version
 - Score Tracking
 - Multiplayer Mode
