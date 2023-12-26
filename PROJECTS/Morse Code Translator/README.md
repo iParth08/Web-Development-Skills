@@ -1,4 +1,4 @@
-# Morse Code Translator
+# Project Name : Morse Code Translator
 
 The Morse Code Translator is a simple web application built using HTML, CSS, and JavaScript. It allows users to convert English text to Morse Code and vice versa. Additionally, it provides a visual representation of Morse Code through a simple animation.
 

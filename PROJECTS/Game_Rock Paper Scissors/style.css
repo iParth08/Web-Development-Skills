@@ -1,0 +1,173 @@
+/* Google Fonts - I chose Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Custom class properties */
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    height: 100vh;
+    width: 100%;
+    background-color: #f6f7fb;
+}
+
+.game-box{
+    width: 600px;
+    padding: 2rem 5rem; /*Spacing is required for good designing*/
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #853de2;
+
+}
+
+
+/* Resulting image */
+.animeSection{
+    widows: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.animeSection img{
+    width: 120px;
+
+}
+
+.animeSection .user-chose img{
+    transform: rotate(90deg);
+}
+
+.animeSection .cpu-chose img{
+    transform: rotate(90deg) rotateX(180deg);
+    
+}
+
+.animeSection.animate .user-chose{
+    transform-origin: left;
+    animation: userShake 0.8s ease-in-out infinite;
+}
+
+.animeSection.animate .cpu-chose{
+    transform-origin:right;
+    animation: cpuShake 0.8s ease-in-out infinite;
+}
+
+/* User Choices list */
+.userChoices{
+    display: flex;
+    justify-content: space-around;
+    margin: auto 2rem;
+    /* width: 240px; */
+    
+}
+
+.option-img{
+    opacity: 0.5;
+    cursor: pointer;
+
+    transition: opacity 0.3s ease; /*use of it*/
+}
+
+.option-img img{
+    width: 60px;
+}
+
+/* Option image text */
+.option-img p{
+    color: #563de2;
+    text-align: center;
+    margin-top: 0.5em;
+    
+}
+
+/* ON HOVER */
+.option-img:hover{
+    opacity: 0.8;
+}
+
+/* ON ACTIVE */
+.option-img.active{
+    opacity: 1;
+    
+}
+
+.option-img.active img{
+    /* Bounce animation */
+    animation: bounce 2s ease-out infinite;
+}
+
+/* Result text properties */
+.result{
+    width: 100%;
+    height: 50px;
+    color: #853de2;
+    margin-bottom: 2rem ;
+}
+
+
+/* ANIMATIONS */
+
+/* BOUNCE on Active */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+/* Vibrating text */
+@keyframes vibrate {
+    0% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-2px);
+    }
+    40% {
+      transform: translateX(2px);
+    }
+    60% {
+      transform: translateX(-2px);
+    }
+    80% {
+      transform: translateX(2px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .vibrating-text {
+    display: inline-block; /* Ensures that the animation affects only the text itself */
+    animation: vibrate 0.3s ease infinite;
+  }
+
+  /* user and cpu hand shake */
+  @keyframes userShake {
+    50%{
+        transform: rotate(10deg);
+    }
+  }
+
+  @keyframes cpuShake {
+    50%{
+        transform: rotate(-10deg);
+    }
+  }
+  
