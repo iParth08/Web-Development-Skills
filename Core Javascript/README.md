@@ -2,53 +2,64 @@
 
 ## Contents
 
-- [JavaScript Notes](#javascript-notes)
-- [Contents](#contents)
-- [Keypoints](#keypoints)
 - [Basic Concepts In JS](#basic-concepts-in-js)
-  - [Declare variables](#declare-variables)
-  - [Data types in JS](#data-types-in-js)
-  - [Operators](#operators)
-  - [Conditional Expressions](#conditional-expressions)
-  - [Loop in JS](#loop-in-js)
-  - [Functions](#functions)
-- [Iterable type data](#iterable-type-data)
-  - [Strings in JS](#strings-in-js)
-  - [Arrays in JS](#arrays-in-js)
-- [In-Browser JavaScript (Window Object)](#in-browser-javascript-window-object)
-  - [Browser Object Module](#browser-object-module)
-  - [Document Object Model (DOM)](#document-object-model-dom)
-- [Working With DOM](#working-with-dom)
-  - [Walking the DOM](#walking-the-dom)
-  - [Searching in DOM](#searching-in-dom)
-  - [Insertion into DOM](#insertion-into-dom)
-    - [Create new and Insertion](#create-new-and-insertion)
-    - [Adjacent Insertion](#adjacent-insertion)
-  - [Get and Set Innercontent](#get-and-set-innercontent)
-  - [Attributes and Methods](#attributes-and-methods)
-  - [Modification of ClassList](#modification-of-classlist)
-- [Browser Events](#browser-events)
-  - [Various Events](#various-events)
-  - [Handling Events](#handling-events)
-  - [Event Object](#event-object)
-- [Asynchronous Programming in JS](#asynchronous-programming-in-js)
-  - [setInterval() or setTimeout()](#setinterval-or-settimeout)
-  - [Callbacks and Errors](#callbacks-and-errors)
-  - [Error Handling {using callbacks}](#error-handling-using-callbacks)
-  - [Pyramid of Doom or Callback Hell](#pyramid-of-doom-or-callback-hell)
-  - [Promises](#promises)
-    - [How to Create Promise](#how-to-create-promise)
-    - [Promise Chaining : A solution for Callback hell](#promise-chaining--a-solution-for-callback-hell)
-    - [Multiple Handler to one Promise](#multiple-handler-to-one-promise)
-  - [Promise API](#promise-api)
-  - [Make any Function asynchronous : (Promise)](#make-any-function-asynchronous--promise)
-- [Error Handling](#error-handling)
-  - [try-catch \& finally](#try-catch--finally)
-  - [Custom Error and Error Object](#custom-error-and-error-object)
-- [Fetch API](#fetch-api)
-- [Storage in JS](#storage-in-js)
-  - [Cookies](#cookies)
-  - [localStorage](#localstorage)
+    - [Declare variables](#declare-variables)
+    - [Data types in JS](#data-types-in-js)
+    - [Operators](#operators)
+    - [Conditional Expressions](#conditional-expressions)
+    - [Loop in JS](#loop-in-js)
+    - [Functions](#functions)
+  - [Iterable type data](#iterable-type-data)
+    - [Strings in JS](#strings-in-js)
+    - [Arrays in JS](#arrays-in-js)
+  - [In-Browser JavaScript (Window Object)](#in-browser-javascript-window-object)
+    - [Browser Object Module](#browser-object-module)
+    - [Document Object Model (DOM)](#document-object-model-dom)
+  - [Working With DOM](#working-with-dom)
+    - [Walking the DOM](#walking-the-dom)
+    - [Searching in DOM](#searching-in-dom)
+    - [Insertion into DOM](#insertion-into-dom)
+      - [Create new and Insertion](#create-new-and-insertion)
+      - [Adjacent Insertion](#adjacent-insertion)
+    - [Get and Set Innercontent](#get-and-set-innercontent)
+    - [Attributes and Methods](#attributes-and-methods)
+    - [Modification of ClassList](#modification-of-classlist)
+  - [Browser Events](#browser-events)
+    - [Various Events](#various-events)
+    - [Handling Events](#handling-events)
+    - [Event Object](#event-object)
+  - [Asynchronous Programming in JS](#asynchronous-programming-in-js)
+    - [setInterval() or setTimeout()](#setinterval-or-settimeout)
+    - [Callbacks and Errors](#callbacks-and-errors)
+    - [Error Handling {using callbacks}](#error-handling-using-callbacks)
+    - [Pyramid of Doom or Callback Hell](#pyramid-of-doom-or-callback-hell)
+    - [Promises](#promises)
+      - [How to Create Promise](#how-to-create-promise)
+      - [Promise Chaining : A solution for Callback hell](#promise-chaining--a-solution-for-callback-hell)
+      - [Multiple Handler to one Promise](#multiple-handler-to-one-promise)
+    - [Promise API](#promise-api)
+    - [Make any Function asynchronous : (Promise)](#make-any-function-asynchronous--promise)
+  - [Error Handling](#error-handling)
+    - [try-catch \& finally](#try-catch--finally)
+    - [Custom Error and Error Object](#custom-error-and-error-object)
+  - [Fetch API](#fetch-api)
+  - [Storage in JS](#storage-in-js)
+    - [Cookies](#cookies)
+    - [localStorage](#localstorage)
+    - [sessionStorage](#sessionstorage)
+    - [Storage Event](#storage-event)
+- [Advance JS](#advance-js)
+  - [IIFE (Immediately Invoked Function)](#iife-immediately-invoked-function)
+  - [Destructuring and Spread Operator](#destructuring-and-spread-operator)
+  - [Hoisting](#hoisting)
+  - [Closure](#closure)
+- [Object Oriented Programming in JS](#object-oriented-programming-in-js)
+  - [Four Pillars of OOPS](#four-pillars-of-oops)
+  - [Object and Prototypes](#object-and-prototypes)
+  - [Classes, Objects and Constructors](#classes-objects-and-constructors)
+  - [Inheritance and super](#inheritance-and-super)
+  - [static Methods](#static-methods)
+  - [getter, setter and instanceof](#getter-setter-and-instanceof)
 
 ## Keypoints
 - **Search mdn for docs**
@@ -66,7 +77,7 @@
 5. What are iterables ?
 
 
-## Basic Concepts In JS
+# Basic Concepts In JS
 
 ### Declare variables
 
@@ -914,11 +925,13 @@ let a_promise = fetch(url, [option]);
 
 ### Cookies
 *Cookies are small string of data directly stored in Browser* 
-> PENDING FOR MORE
+> PENDING FOR MORE Cookies+options
  ```Js
    document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-
  ```
+
+ - [HarryCookieVideo](https://youtu.be/sHrwueeeMmY?si=i_5sdY6Yxn4DD-PB)
+ - 
 
 ### localStorage
 *localStorage is a web storage object that keeps key-value pair in local browser*
@@ -928,6 +941,242 @@ let a_promise = fetch(url, [option]);
   
   ```JS
   //localStorage methods
-  
+      localStorage.setItem(key, value);
+      let value = localStorage.getItem(key);
+      localStorage.removeItem(key)
+      localStorage.clear();
+
+      //all keys present in the localStorage
+      let keys = Object.keys(localStorage);
+
+      localStorage.length; //gives no. of keys
+      localStorage.key(0); //gives key at index 0
+
+  ```
+### sessionStorage
+*sessionStorage* is similar to localStorage the only difference is that
+- localStorage is persistent across tab and even survive tab kill
+- sessionStorage is persistent only in the tab for that particular session only.
+
+### Storage Event
+*Storage Event* is triggered whenever localStorage or sessionStorage is updated/modified.
+> Learn later
+
+```JS
+   window.onstorage = (event) => {
+      console.log(event);
+   }
+```
+# Advance JS
+
+## IIFE (Immediately Invoked Function)
+- No need of trash function_names
+
+```JS
+   (async ()=>{
+      //code of function
+   })();
+```
+
+## Destructuring and Spread Operator
+- Destructuring : assign values from an object or array
+ 
+  ```JS
+      // [unpacked values] = pack
+      let arr = [2,3,4,5,7];
+      let [a, , c, ...r] = arr; // a = 2, , c=4, r = [5,7]
+      const {x, y} = {x : 1, y : 2};
+
+      // here ...r is Rest Operator that packed rest values in one array r
   ```
 
+- Spread Operator : unpack and spreads any array or object {Shallow Copy}
+  
+  ```JS
+      //
+      const arr = [1, 2, 4];
+      const obj = {...arr}; // {0:1, 1:2, 2:4}
+
+      const obj2 = {...obj1, name:"Modified"}; 
+  ```
+
+> - Explaination [DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-destructuring-rest-parameters-and-spread-syntax-in-javascript#destructuring);
+> - Reference [Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment);
+> - Reference [Spread Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax);
+
+## Hoisting
+> - **var** : Declaration is hoisted on the top, not the initialization. = undefined
+> - **let/const** : when hoisted get into dead zone without initialization
+> - **function func(){}** : is also hoisted but not the arrow function or function/class expressions {= ...}
+
+```Js
+   //Function Expression
+   let func = function(){
+      //....
+   }
+
+   //Class Expression
+   const className = class {
+      //....
+   }
+```
+
+## Closure
+- A closure is the combination of a function bundled together (enclosed) with **references** to its surrounding state (the lexical environment).
+ 
+ ```JS
+   function init() {
+      var name = "Mozilla"; // name is a local variable created by init
+      function displayName() {
+         // displayName() is the inner function, that forms the closure
+         console.log(name); // use variable declared in the parent function
+      }
+      name = "Hello Moss Moss";
+      displayName();
+   }
+   init();
+
+   // reference-> name : Hello Moss Moss (Output)
+ ```
+> An arrow function always takes its lexical environment into consideration. \
+> Normal function (inside a function), 'this' keyword will refer to a window object, but arrow function will use 'this' of its parent (environment) object.
+
+
+# Object Oriented Programming in JS
+*Object Oriented Programming is a progarmming paradigm (technique) based on the concept of objects that can have some attributes (properties) and methods (functions).*
+
+> Modelled on real-world object
+
+## Four Pillars of OOPS
+
+- **Abstraction** : Hiding of unnecessary internal details
+    - Use the phone, donot think about it's internal circuits and softwares
+   
+- **Encapsulation** : Combine multiple component into one entity
+    - Your phone has encapsulated data and features of camera, music player, dialer,...
+     
+- **Inheritance** : Get properties of a base model and enhance it further
+    - Our old phones were given new features, it evolved to smartphone
+     
+- **Polymorphism** : A  single function/entity, multiple form
+    - Smartphone becomes dialer, camera, notepad, speaker, TV.. as per requirement
+
+## Object and Prototypes
+- Every Javascript object has its prototype 
+- Use __proto__ to define and add prototype to an object
+  
+  ```JS
+      let A = {
+         run : () => {
+            console.log("I am method defined in object A");
+         }
+      }
+
+      let P = {
+         call : () => {
+            alert("I am called By A from P");
+         }
+      }
+
+      A.__proto__ = P;
+
+      A.run();
+      A.call();
+  ```
+## Classes, Objects and Constructors
+- Classes are templates that define properties and methods of an entity.
+- Objects are instances of a class. They exhibits all the defined properties and methods of the class.
+- *new* keyword used to instantiate an object auto calls constructors to give values to properties/attributes.
+  
+  ```JS
+         class Anime{
+         constructor(title, desc, episodes, rate){
+            this.title = title;
+            this.description = desc;
+            this.episodes = episodes;
+            this.rating = rate;
+         }
+
+         setDescription(desc){
+            this.description = desc;
+         }
+
+         relay(){
+            console.info(this.title + "is now online with episodes : " + this.episodes);
+         }
+
+         changeRating(rate){
+            console.warn(`Rating has been updated from ${this.rating} to ${rate}.`)
+            this.rating = rate;
+         }
+
+         logData(){
+            console.log(`Title : ${this.title}, Description : ${this.description}, Episodes : ${this.episodes}, Rating : ${this.rating}`);
+         }
+
+      };
+
+
+      let jujutsu = new Anime("Jujutsu Kaisen", "Lets kill Sukuna", 24, 4.5);
+      jujutsu.logData();
+      jujutsu.relay();
+      jujutsu.changeRating(6);
+      jujutsu.logData();
+
+  ```
+
+## Inheritance and super
+- Taking all the properties of a base class as a copy
+- Use more, Code less; Reduces redundancy
+- **super** refers to base/parent class
+- In JS, child class auto inherits the base constructor too.
+  
+  ```Js
+   class Animal {
+      ...
+
+      shout(voice){
+         console.log(`Animal sounds : ${voice}`);
+      }
+   }
+
+   class Monkey extends Animal {
+      ...
+      //auto created by JS (not by C/Java) 
+      constructor(...args){
+         super(...args) //!important and must
+      }
+
+      //Override
+      shout(voice){
+         super.shout(voice);
+         console.log("Monkey says");
+      }
+   }
+  ```
+
+## static Methods
+- methods binded to class itself and not to its objects.
+  
+  ```JS
+   class Animal{
+      constructor(name){
+         this.name = Animal.Capitalize(name);
+      }
+
+      log(){
+         console.log(this.name);
+      }
+
+      static Capitalize(name){
+         return name.charAt(0).toUpperCase + name.substr(1, name.length);
+      }
+   }
+
+   let j = new Animal("jack");
+   j.log(); //Jack
+  ```
+## getter, setter and instanceof
+> Learn get set when required
+>
+> instanceof checks if an object belongs to the class
