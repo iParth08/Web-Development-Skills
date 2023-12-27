@@ -1,0 +1,8 @@
+API KEY : 77cc5a20b1f0aff52f6bfda762f2cf82
+
+calls
+
+city - https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+city country 
+- https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid={API key}
+ - https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}

@@ -848,8 +848,68 @@ Promise constructor returns a (readonly) Promise Object.
 
    ```
 ## Fetch API
-> PENDING 66, 67
+*Fetch API can be used to get data over the network*
 
+```JS
+let a_promise = fetch(url, [option]);
+```
+- If *option* not defined, a **get** request is sent by default.
+- get request has a limit on how much data we can send over url.
+- get is also not good by security point of view.
+  
+> AJAX, JSON, TEXT,..... \
+> *Fetch returns a **promise** which resolves in two stages*
+
+**Getting a response is a two staged process**
+1. An object of Response class
+   - status : http status code, 200 ...
+   - ok : boolean, if status is within range
+  
+2. Call another method to access body in different format \
+*ONLY ONCE WHICHEVER Required and Allowed*
+   - response.text()
+   - response.json()
+   - response.formData()
+   - response.blob()
+   - response.arrayByte()
+    
+ ```JS
+      let city = "Banglore";
+      let weatherRequest = fetch(`https://goweather.herokuapp.com/weather/${city}`);
+
+      weatherRequest.then((responseObj)=>{
+         return responseObj.json();
+      }).then((value)=>{
+         console.log(value);
+      });
+ ``` 
+
+**POST request with Fetch API**
+> [Learn Well and Try](https://jsonplaceholder.typicode.com/)
+
+- *POST is used to send data to a server to create/update a resource.*
+- The data sent to the server with POST is stored in the **request body** of the HTTP request.
+- Secure, since it doesnot append data in URL
+
+```JS
+//using JSONplaceholder for fake api post, data is not really stored on server here
+   const options = {
+      method : "POST",
+      headers : {
+         "Content-type" : "application/json"
+      },
+      body : JSON.stringify({
+         title : "Learn JS",
+         body : "Fetch in Progress",
+         userId : "666"
+      })
+   }
+
+   fetch('https://jsonplaceholder.typicode.com/posts', options)
+   .then((response) => response.json())
+   .then((json) => console.log(json));
+
+```
 ## Storage in JS
 
 ### Cookies
