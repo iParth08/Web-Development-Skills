@@ -1,22 +1,23 @@
-b# REACT JS 
+# REACT JS 
 
 ## Contents
 
-- [Contents](#contents)
-- [Key-Points](#key-points)
-- [Essentials Of React](#essentials-of-react)
-  - [Class Component](#class-component)
-  - [Functional Component](#functional-component)
-  - [export \& import](#export--import)
-  - [Principles of Components : Data - flow](#principles-of-components--data---flow)
-    - [**props** :](#props-)
-    - [**state** :](#state-)
-  - [Events in React](#events-in-react)
-  - [Hooks](#hooks)
-    - [useState](#usestate)
-    - [useReducer](#usereducer)
-  - [Context API](#context-api)
-  - [Links and Routes](#links-and-routes)
+- [REACT JS](#react-js)
+  - [Contents](#contents)
+  - [Key-Points](#key-points)
+  - [Essentials Of React](#essentials-of-react)
+    - [Class Component](#class-component)
+    - [Functional Component](#functional-component)
+    - [export \& import](#export--import)
+    - [Principles of Components : Data - flow](#principles-of-components--data---flow)
+      - [**props** :](#props-)
+      - [**state** :](#state-)
+    - [Events in React](#events-in-react)
+    - [Hooks](#hooks)
+      - [useState](#usestate)
+      - [useReducer](#usereducer)
+    - [Context API](#context-api)
+    - [Links and Routes](#links-and-routes)
 
 
 ## Key-Points
@@ -174,10 +175,12 @@ Functions that let to hook into React state and lifecycle features from componen
 
 > [!WARNING]  
 > **Sibling-Sibling Data Transfer** 
-> - No need for Prop drilling
->   :: all shared data in the parent  then passed into child
->- No need for lifing State up 
->   :: return to parent then sibling 
+> - No need for Prop drilling  
+>   : all shared data in the parent  then passed into child
+>- No need for lifing State up  
+>   : return to parent then sibling 
+>
+> *SOL : CONTEXT API*
 
 #### useReducer
 In addition with managing state values, it also provides with
